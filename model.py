@@ -33,6 +33,11 @@ class QTrainer:
 
     
     # TODO: Explain how this method works.
+    # the train_step starts by getting the current state, the next state, the action, and the reward.
+    # it then looks at the Q value of the current state and looks at the value of the next state.
+    # it then calculates the Q value of the next state by looking at the max Q value of the next state.
+    # it then backpropogates the loss and updates the weights.
+    
     def train_step(self,state,action,reward,next_state,done):
         state = torch.tensor(state,dtype=torch.float).cpu()
         next_state = torch.tensor(next_state,dtype=torch.float).cpu()

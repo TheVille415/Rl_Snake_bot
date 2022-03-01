@@ -92,6 +92,7 @@ class Agent:
         self.trainer.train_step(state,action,reward,next_state,done)
 
     # TODO: What is the role of epsilon in this method? Feel free to reference the OpenAI Gym RL tutorial from 02/09/22
+    # Answer: epsilon is the probability of choosing a random action instead of the best action. This will help our model explore more.
     def get_action(self,state):
         # random moves: tradeoff explotation / exploitation
         self.epsilon = 80 - self.n_game
@@ -107,6 +108,11 @@ class Agent:
         return final_move
 
 # TODO: Write a couple sentences describing the training process coded below.
+# the training function below is used to train the model by using the short state memory, and saving the old state and the action taken.
+# this is stored in the .remember() method.
+# then adds those to the long memory
+
+# the short term memory is whats used while playing the game and when its finished it is applied to the long term memory.
 def train():
     plot_scores = []
     plot_mean_scores = []
@@ -153,3 +159,6 @@ if(__name__=="__main__"):
 
 # TODO: Write a brief paragraph on your thoughts about this implementation. 
 # Was there anything surprising, interesting, confusing, or clever? Does the code smell at all?
+# I think the code is clean and simple. 
+# its very interesting to see the model learn to play the game. Using shorter bursts of memory work with storing it long term is how we work in someways.
+# this code smells like a good first dish before the main course comes
